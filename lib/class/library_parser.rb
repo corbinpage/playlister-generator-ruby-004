@@ -18,21 +18,33 @@ end
 def parse
   files.each do |x|
     parts = parse_filename(x)
-    duplicate = Artist.all.any? {|a| a.name.match(parts[0])}
-    if duplicate
-      a = Artist.find_by_name(parts[0])
+    # duplicate = Artist.all.any? {|a| a.name.match(parts[0])}
+    # if duplicate
+    #   a = Artist.find_by_name(parts[0])
+    #   s = Song.create_by_name(parts[1])
+    #   g = Genre.find_by_name(parts[2])      
+    # else
+    #   a = Artist.create_by_name(parts[0])
+
+      if Artist.all.any?{|a| a.name == parts[0]}
+        a = Artist.find_by_name(parts[0])
+      else
+        a = Artist.create_by_name(parts[0]) 
+      end
+      #binding.pry
       s = Song.create_by_name(parts[1])
-      g = Genre.find_by_name(parts[2])      
-    else
-      a = Artist.create_by_name(parts[0])
-      s = Song.create_by_name(parts[1])
-      g = Genre.create_by_name(parts[2])
-    end
+      if Genre.all.any?{|g| g.name == parts[2]}
+        g = Genre.find_by_name(parts[2])
+      else
+        g = Genre.create_by_name(parts[2]) 
+      end
+    
     s.genre = g 
     a.add_song(s)
+    #binding.pry
   end
 
-  binding.pry
+ # binding.pry
 
 end
 

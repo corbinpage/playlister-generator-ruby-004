@@ -25,7 +25,7 @@ def self.reset_all
 end
 
 def self.find_by_name(name)
-  self.all.each { |genre| genre if genre.name == name }[0]
+  self.all.select { |genre| genre if genre.name == name }[0]
 end
 
 def self.create_by_name(name)

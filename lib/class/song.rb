@@ -14,7 +14,7 @@ def genre=(g)
 end
 
 def self.find_by_name(name)
-  self.all.each { |song| song if song.name == name }[0]
+  self.all.select { |song| song if song.name == name }[0]
 end
 
 def self.create_by_name(name)

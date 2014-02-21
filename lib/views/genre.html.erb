@@ -8,7 +8,7 @@
 
     <h2>Songs</h2>
     <ul><% curr_genre.songs.each do |s| %>
-      <li><a href="<%= s.artist.url %>"><%= s.artist.url %></a> - <%= s.name %></li>
+      <li><a href="../artists/<%= s.artist.url %>"><%= s.artist.name %></a> - <%= s.name %></li>
     <% end %></ul>
     <br /><br />
     <h2>Other Genres</h2>

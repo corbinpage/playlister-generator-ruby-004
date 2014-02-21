@@ -26,7 +26,8 @@ def self.create_by_name(name)
 end
 
 def self.find_by_name(name)
-  self.all.each { |artist| artist if artist.name == name }[0]
+  self.all.select { |artist| artist if artist.name == name }[0]
+  #binding.pry
 end
 
 def self.all
