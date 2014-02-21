@@ -28,7 +28,7 @@ def parse_filename(filename)
   song = filename.split(" - ")[1].split(" [")[0]
   genre = filename.split("[")[1].split("]")[0]
 
-  puts [artist,song,genre].join(',')
+  #puts [artist,song,genre].join(',')
 
   [artist,song,genre]
 end
