@@ -6,7 +6,7 @@
   <body>
     <h2>Genres</h2>
     <ul><% Genre.all.each do |g| %>
-      <li><a href="<%= g.url %>"><%= g.name %></a></li>
+      <li><a href="genres/<%= g.url %>"><%= g.name %></a></li>
     <% end %></ul>
   </body>
 </html>

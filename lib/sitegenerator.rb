@@ -1,7 +1,7 @@
 class SiteGenerator
 
   def make_artists_homepage!
-     erb = ERB.new(File.open("./views/artist_home.html.erb").read)
+     erb = ERB.new(File.open("lib/views/artist_home.html.erb").read)
 
       output_file = File.open("./_site/artist_home.html", "w")
       output_file.write(erb.result(binding))
@@ -9,7 +9,7 @@ class SiteGenerator
   end
 
   def make_genres_homepage!
-    erb = ERB.new(File.open("./views/genre_home.html.erb").read)
+    erb = ERB.new(File.open("lib/views/genre_home.html.erb").read)
 
       output_file = File.open("./_site/genre_home.html", "w")
       output_file.write(erb.result(binding))
@@ -18,10 +18,10 @@ class SiteGenerator
 
   def generate_pages_artist!
 
-    erb = ERB.new(File.open("./views/artist.html.erb").read)
+    erb = ERB.new(File.open("lib/views/artist.html.erb").read)
 
     Artist.all.each do |curr_artist|
-      output_file = File.open("./_site/artists/#{curr_artist.url}", "w")
+      output_file = File.open("_site/artists/#{curr_artist.url}", "w")
       output_file.write(erb.result(binding))
       output_file.close
     end
@@ -29,10 +29,10 @@ class SiteGenerator
   end
 
   def generate_pages_genre!
-    erb = ERB.new(File.open("./views/genre.html.erb").read)
+    erb = ERB.new(File.open("lib/views/genre.html.erb").read)
 
     Genre.all.each do |curr_genre|
-      output_file = File.open("./_site/artists/#{curr_genre.url}", "w")
+      output_file = File.open("_site/genres/#{curr_genre.url}", "w")
       output_file.write(erb.result(binding))
       output_file.close
     end
