@@ -17,9 +17,11 @@ end
 def parse
   files.each do |x|
     parts = parse_filename(x)
-    Artist.create_by_name(parts[0])
-    Song.create_by_name(parts[1])
-    Genre.create_by_name(parts[2])
+    a = Artist.create_by_name(parts[0])
+    s = Song.create_by_name(parts[1])
+    g = Genre.create_by_name(parts[2])
+    s.genre = g
+    a.add_song(s)
   end
 end
 

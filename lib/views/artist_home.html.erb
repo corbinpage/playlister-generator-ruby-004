@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Artists</title>
+  </head>
+  <body>
+    <h2>Artists</h2>
+    <ul><% Artist.all.each do |a| %>
+      <li><a href="artists/<%= a.url %>"><%= a.name %></a></li>
+    <% end %></ul>
+  </body>
+</html>

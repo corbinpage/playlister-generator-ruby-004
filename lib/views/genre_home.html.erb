@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Genres</title>
+  </head>
+  <body>
+    <h2>Genres</h2>
+    <ul><% Genre.all.each do |g| %>
+      <li><a href="genres/<%= g.url %>"><%= g.name %></a></li>
+    <% end %></ul>
+  </body>
+</html>
