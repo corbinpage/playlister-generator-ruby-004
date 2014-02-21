@@ -20,9 +20,9 @@ def add_songs(songs)
 end
 
 def self.create_by_name(name)
-  a = Artist.new
-  a.name = name
-  a
+    a = Artist.new 
+    a.name = name
+    a
 end
 
 def self.find_by_name(name)

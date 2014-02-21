@@ -1,6 +1,7 @@
 require_relative 'artist.rb'
 require_relative 'song.rb'
 require_relative 'genre.rb'
+require 'pry'
 
 class LibraryParser
   attr_accessor :path
@@ -17,12 +18,22 @@ end
 def parse
   files.each do |x|
     parts = parse_filename(x)
-    a = Artist.create_by_name(parts[0])
-    s = Song.create_by_name(parts[1])
-    g = Genre.create_by_name(parts[2])
-    s.genre = g
+    duplicate = Artist.all.any? {|a| a.name.match(parts[0])}
+    if duplicate
+      a = Artist.find_by_name(parts[0])
+      s = Song.create_by_name(parts[1])
+      g = Genre.find_by_name(parts[2])      
+    else
+      a = Artist.create_by_name(parts[0])
+      s = Song.create_by_name(parts[1])
+      g = Genre.create_by_name(parts[2])
+    end
+    s.genre = g 
     a.add_song(s)
   end
+
+  binding.pry
+
 end
 
 def parse_filename(filename)
