@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= curr_artist.name %></title>
+  </head>
+  <body>
+    <h1><%= curr_artist.name %></h1>
+
+    <h2>Songs</h2>
+    <ul><% curr_artist.songs.each do |s| %>
+      <li><a href="<%= s.url %>"><%= s.name %></a>    Genre: <a href="<%= s.genre.url %>"><%= s.genre.name %></a></li>
+    <% end %></ul>
+    <br /><br />
+    <h2>Other Artists</h2>
+    <ul><% Artist.all.each do |a| %>
+      <li><a href="<%= a.url %>"><%= a.name %></a></li>
+    <% end %></ul>
+  </body>
+</html>
