@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+require_relative '../config/environment'
+
+l = LibraryParser.new('db/data')
+l.parse
+
+site_generator = SiteGenerator.new
+
+site_generator.generate_pages_artist!
+site_generator.generate_pages_genre!
+site_generator.make_genres_homepage!
+site_generator.make_artists_homepage!

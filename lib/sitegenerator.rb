@@ -1,18 +1,27 @@
 class SiteGenerator
 
   def make_artists_homepage!
-    
+     erb = ERB.new(File.open("./views/artist_home.html.erb").read)
+
+      output_file = File.open("./_site/artist_home.html", "w")
+      output_file.write(erb.result(binding))
+      output_file.close
   end
 
   def make_genres_homepage!
+    erb = ERB.new(File.open("./views/genre_home.html.erb").read)
+
+      output_file = File.open("./_site/genre_home.html", "w")
+      output_file.write(erb.result(binding))
+      output_file.close
   end
 
   def generate_pages_artist!
 
-    erb = ERB.new(File.open("./lib/templates/movie.html.erb").read)
+    erb = ERB.new(File.open("./views/artist.html.erb").read)
 
-    Movie.all.each do |curr_movie|
-      output_file = File.open("./_site/movies/#{curr_movie.url}", "w")
+    Artist.all.each do |curr_artist|
+      output_file = File.open("./_site/artists/#{curr_artist.url}", "w")
       output_file.write(erb.result(binding))
       output_file.close
     end
@@ -20,6 +29,13 @@ class SiteGenerator
   end
 
   def generate_pages_genre!
+    erb = ERB.new(File.open("./views/genre.html.erb").read)
+
+    Genre.all.each do |curr_genre|
+      output_file = File.open("./_site/artists/#{curr_genre.url}", "w")
+      output_file.write(erb.result(binding))
+      output_file.close
+    end
   end
 
 end
