@@ -34,4 +34,8 @@ def self.create_by_name(name)
   g
 end
 
+def url
+  @name.downcase.gsub(' ','_') << '.html'
+end 
+
 end

@@ -41,4 +41,8 @@ def self.reset_all
 
 end
 
+def url
+  @name.downcase.gsub(' ','_') << '.html'
+end 
+
 end

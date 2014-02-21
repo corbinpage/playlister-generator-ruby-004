@@ -45,4 +45,8 @@ def self.reset_all
   @@all_artists.clear
 end
 
+def url
+  @name.downcase.gsub(' ','_') << '.html'
+end 
+
 end
